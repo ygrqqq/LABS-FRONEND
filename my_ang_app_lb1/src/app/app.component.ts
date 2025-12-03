@@ -1,8 +1,8 @@
 import { Component, ChangeDetectionStrategy } from '@angular/core';
-import { HeaderComponent } from './header.component';
-import { FooterComponent } from './footer.component';
-import { SidebarComponent } from './sidebar.component';
-import { MainContentComponent } from './main-content.component';
+import { HeaderComponent } from './header/header.component';
+import { FooterComponent } from './footer/footer.component';
+import { SidebarComponent } from './sidebar/sidebar.component';
+import { MainContentComponent } from './main/main-content.component';
 
 @Component({
   selector: 'app-root',

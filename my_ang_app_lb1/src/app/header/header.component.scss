@@ -1,0 +1,16 @@
+.header-container {
+  width: 100%;
+  background: linear-gradient(to right, #1d4ed8, #2563eb); /* Синій градієнт */
+  color: white;
+  padding: 1rem 1.5rem;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  border-bottom-left-radius: 0.5rem;
+  border-bottom-right-radius: 0.5rem;
+}
+
+.header-title {
+  font-size: 1.875rem; /* 30px */
+  font-weight: 700;
+  margin: 0;
+  letter-spacing: 0.025em;
+}

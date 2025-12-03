@@ -3,13 +3,8 @@ import { Component, ChangeDetectionStrategy } from '@angular/core';
 @Component({
   selector: 'app-header',
   standalone: true,
-  template: `
-    <header>
-      <h1 class="text-3xl font-bold">
-        {{ projectTitle }}
-      </h1>
-    </header>
-  `,
+  templateUrl: './header.component.html',
+  styleUrls: ['./header.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class HeaderComponent {
