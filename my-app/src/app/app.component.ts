@@ -1,22 +1,53 @@
-import { Component, OnInit } from '@angular/core';
-import { AppLogicService } from './services/app-logic.service';
+import { Component } from '@angular/core';
+import { FormsModule } from '@angular/forms';
+import { NgForOf } from '@angular/common';
+import { FilterByFieldPipe } from './pipes/filter-by-field.pipe';
+
+interface Item {
+  id: number;
+  name: string;
+  category: string;
+}
 
 @Component({
   selector: 'app-root',
+  standalone: true,
+  imports: [
+    FormsModule,
+    NgForOf,
+    FilterByFieldPipe
+  ],
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent implements OnInit {
-  items: string[] = [];
+export class AppComponent {
+  searchTerm: string = '';
 
-  constructor(private appLogic: AppLogicService) {}
+  // 🔹 назва нового елемента, яку вводить користувач
+  newItemName: string = '';
 
-  ngOnInit(): void {
-    this.processData();
-  }
+  items: Item[] = [
+    { id: 1, name: 'Apple',  category: 'Fruit' },
+    { id: 2, name: 'Orange', category: 'Fruit' },
+    { id: 3, name: 'Carrot', category: 'Vegetable' },
+    { id: 4, name: 'Potato', category: 'Vegetable' },
+  ];
 
-  processData(): void {
-    console.log('Component: Запит до AppLogicService...');
-    this.items = this.appLogic.getDataAndLog();
+  addItem() {
+    const name = this.newItemName.trim();
+    if (!name) {
+      return; // можна замість цього показати alert, якщо хочеш
+    }
+
+    const nextId = this.items.length + 1;
+
+    this.items.push({
+      id: nextId,
+      name: name, // ✅ використовується те, що ввів користувач
+      category: nextId % 2 === 0 ? 'Fruit' : 'Vegetable'
+    });
+
+    // очистити поле після додавання
+    this.newItemName = '';
   }
 }

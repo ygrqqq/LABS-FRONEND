@@ -1,11 +1,24 @@
-<div style="padding: 20px;">
-  <h2>Ієрархія Сервісів</h2>
-  <button (click)="processData()">Оновити дані та Логувати</button>
+<h1>Практична робота №9: фільтрація масиву пайпом</h1>
 
-  <h3>Отримані дані:</h3>
-  <ul>
-    <li *ngFor="let item of items">{{ item }}</li>
-  </ul>
-  
-  <p><em>Перевірте консоль розробника (F12) для перегляду логів AnalyticsService.</em></p>
-</div>
+<!-- Поле для пошуку -->
+<input
+  type="text"
+  [(ngModel)]="searchTerm"
+  placeholder="Пошук за назвою..."
+/>
+
+<ul>
+  <li *ngFor="let item of items | filterByField:'name':searchTerm">
+    {{ item.id }} — {{ item.name }} ({{ item.category }})
+  </li>
+</ul>
+
+<hr>
+
+<!-- Поле для додавання нового елемента -->
+<input
+  type="text"
+  [(ngModel)]="newItemName"
+  placeholder="Назва нового елемента..."
+/>
+<button (click)="addItem()">Додати елемент</button>
